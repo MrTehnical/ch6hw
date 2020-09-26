@@ -1,0 +1,288 @@
+#include <iostream>
+#include <string.h>
+#include <string>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+bool isVowel(char letter);
+bool isPalindrome(string str);
+double rectangle(double l, double w);
+double cirlce(double r);
+double cylinder(double bR, double h);
+
+const double pi = 3.1419;
+
+int main()
+{
+    
+    int q;
+
+    cout << "Select which excercise you would like to execute." << endl;
+    cout << "1, 2, 3, 4, 5, 6... " << endl;
+    cin >> q;
+
+    switch (q)
+    {
+
+    case 1: {
+
+        string str;
+
+        cout << "Enter your string: ";
+        getline(cin, str);
+        isPalindrome(str);
+
+        break;
+    }
+
+    case 2: {
+
+
+
+        char input;
+
+        cout << "Enter a letter: ";
+        cin >> input;
+        cout << endl;
+
+        if (isVowel(input)) {
+
+            cout << input << " is a vowel!" << endl;
+
+        }
+
+        else {
+
+            cout << input << " is not a vowel :(" << endl;
+
+        }
+        break;
+    }
+
+    case 3: {
+
+        int counter;
+        int i;
+        int numv;
+        char vc;
+
+        i = 0;
+        numv = 0;
+
+        cout << "How many letters would you like to check?" << endl;
+        cin >> counter;
+
+        cout << "Enter your letters: " << endl;
+
+        while (i<counter)
+        {
+
+            cin >> vc;
+
+            if (isVowel(vc)) {
+
+                numv++;
+
+            }
+
+            i++;
+
+        }
+
+        cout << "You have " << numv << " vowels." << endl;
+
+        break;
+    }
+
+    case 4: {
+
+        
+        double r;
+        
+        cout << "The square root of pi is " << sqrt(pi) << endl;
+
+        cout << "Enter the radius of your sphere: ";
+        cin >> r;
+        cout << endl;
+
+        cout << "The value of 4*pi*r^2 = " << 4 * pi * pow(r, 2) << endl;
+
+        cout << "The value of (4/3)*pi*r^3 = " << (4 / 3) * pi * pow(r, 3) << endl;
+
+        break;
+    }
+
+    case 5: {
+
+        double radius;
+        double height;
+        double length;
+        double width;
+        double baser;
+        int choice;
+
+        cout << "This program can calculate the area of a rectangle, the area of a cirlce, or the volume of a cylinder." << endl;
+        cout << "1: To find the area of a rectangle." << endl;
+        cout << "2: To find the area of a cirlce." << endl;
+        cout << "3: To find the area of a cyldiner." << endl;
+        cout << "-1: To terminate the program." << endl;
+
+        cin >> choice;
+        cout << endl;
+
+        while (choice != -1) {
+
+            switch (choice) {
+
+            case 1:
+
+                cout << "Enter the width of the rectangle: ";
+                cin >> width;
+                cout << endl;
+
+                cout << "Enter the length of the rectangle: ";
+                cin >> length;
+                cout << endl;
+
+                cout << "Area = " << rectangle(length, width) << endl;
+
+                break;
+
+
+            case 2:
+
+                cout << "Enter the radius of the cirlce: ";
+                cin >> radius;
+                cout << endl;
+
+                cout << "Area = " << cirlce(radius) << endl;
+
+                break;
+
+
+            case 3:
+
+                cout << "Enter the radius of the base of the cylinder: ";
+                cin >> baser;
+                cout << endl;
+
+                cout << "Enter the height of the cylinder: ";
+                cin >> height;
+                cout << endl;
+
+                cout << "Volume = " << cylinder(baser, height) << endl;
+
+                break;
+
+            {
+            default:
+
+                cout << "Invalid choice!" << endl;
+
+                break;
+            }
+
+            }
+                        
+            cout << "1: To find the area of a rectangle." << endl;
+            cout << "2: To find the area of a cirlce." << endl;
+            cout << "3: To find the area of a cyldiner." << endl;
+            cout << "-1: To terminate the program." << endl;
+
+            cin >> choice;
+            cout << endl;
+
+        }
+
+        break;
+    }
+
+    case 6: {
+
+        
+        int number;
+
+        cout << "Enter the number to be reversed: ";
+        cin >> number;
+        cout << endl;
+
+        cout << "The reversed number is " << revnum(number) << endl;
+
+
+        break;
+    }
+
+
+    default:
+        break;
+    }
+
+
+
+
+    return 0;
+}
+
+bool isPalindrome(string str) {
+
+    int length = str.length();
+
+    for (int i = 0; i < length / 2; i++)
+        if (str[i] != str[length - 1 - i])
+            return false;
+
+    return true;
+}
+
+bool isVowel(char v) {
+
+    switch (v) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+        return true;
+
+    default:
+        return false;
+    }
+
+}
+
+double rectangle(double l, double w)
+{
+    return l * w;
+}
+
+double cirlce(double r)
+{
+    return pi * pow(r,2);
+}
+
+double cylinder(double bR, double h)
+{
+    return pi * pow(bR, 2) * h;
+}
+
+int revnum(int num) {
+
+    int reversednumber = 0;
+
+    while (num > 0)
+    {
+
+        int d = num % 10;
+
+        reversednumber = reversednumber * 10 + d;
+
+        num /= 10;
+
+
+    }
+
+    return reversednumber;
+
+}
